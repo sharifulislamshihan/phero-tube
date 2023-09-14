@@ -22,6 +22,7 @@ const loadVideos = async(categoryId) =>{
     const data = await res.json();
     const cardContainer = document.getElementById('card-container');
     data.data?.forEach((video) => {
+        console.log(video.authors[0].verified);
         const div = document.createElement('div')
     div.innerHTML = `
             <div class="card bg-base-100">
@@ -47,12 +48,10 @@ const loadVideos = async(categoryId) =>{
             </div>
         </div>
     `
-    console.log(video.authors[0].verified);
     cardContainer.appendChild(div); 
 
     });
 }
-
 // const handleBlueTick = () =>{
 
 // }
