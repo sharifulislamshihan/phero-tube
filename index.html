@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.4/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>PHERO TUBE</title>
+    <title>PHero Tube</title>
 </head>
 <body class="font-{Inter}">
     <header class="container mx-auto">
@@ -20,7 +20,7 @@
                 </div>
                 <!-- Sort by view button -->
                 <div class="navbar-center">
-                  <a class="btn btn-ghost normal-case text-lg lg:text-xl bg-slate-300 text-black">Sort by view</a>
+                  <button onclick="loadSortByView()" id="sort-container" class="btn btn-ghost normal-case text-lg lg:text-xl bg-slate-300 text-black">Sort by view</button>
                 </div>
                 <div class="navbar-end">
                   <a class="border-none" href="blog.html"><button class="btn btn-primary bg-red-600 text-white">Blog</button></a>
@@ -38,7 +38,7 @@
     </header>
     <main>
         <section class="container mx-auto">
-            <!-- card container -->
+                
                 <div id="card-container1" class="grid mx-9 gap-5 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 hidden">
                     <!-- card -->    
                 </div>
