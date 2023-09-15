@@ -20,40 +20,76 @@ const loadVideos = async(categoryId) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     console.log(categoryId);
     const data = await res.json();
-    const cardContainer = document.getElementById('card-container');
-    data.data?.forEach((video) => {
-        console.log(video.authors[0].verified);
-        const div = document.createElement('div')
-    div.innerHTML = `
-            <div class="card bg-base-100">
-            <figure><img class="w-96 h-44 rounded-xl" src="${video?.thumbnail}" alt="" /></figure>
-            <div class="card-body -ml-8">
-                <div class="flex gap-5">
-                    <img class="w-11 h-11 rounded-full" 
-                    src="${video?.authors[0]?.profile_picture}" alt="">
-                    <h2 class="text-lg font-bold"> ${video?.title}
-                    </h2>
+    const cardContainer1 = document.getElementById('card-container1');
+    const cardContainer2 = document.getElementById('card-container2');
+    cardContainer1.innerHTML = "";
+    cardContainer2.innerHTML = "";
+    const len = data.data.length;
+    console.log(len);
+    if(len >= 1){
+        cardContainer1.classList.remove('hidden');
+        cardContainer2.classList.add('hidden');
+        data.data?.forEach((video) => {
+            const time = video?.others?.posted_date
+            // if(time <3600){
+            //     const min = parseInt(time/60);
+            // }
+            // else{
+            //     const hour = parseInt(time/3600);
+            //     const leftTime = time - (hour*3600);
+            //     const min = parseInt(leftTime/60);
+            // }
+            console.log(time);
+            const div = document.createElement('div')
+        div.innerHTML = `
+                <div class="card bg-base-100">
+                <figure><img class="w-96 h-44 rounded-xl" src="${video?.thumbnail}" alt="" /></figure>
+                <div class=" relative bottom-10 right-3 flex justify-end ml-40 bg-slate-800 text-white text-sm">
+                <h3 class="p-1 pr-3"><span>3</span>hrs <span>54</span> min ago</h3>
                 </div>
-
-                <!-- Name -->
-                <div class="ml-16 -mt-3">
-                    <h2 class="card-title text-[#111111B3] text-sm">
-                        ${video?.authors[0]?.profile_name}
-                        <div class="bedge">
-                            <img class="hidden" src="blueTick.png" alt="">
-                        </div>
-                    </h2>
+                <div class="card-body -ml-8">
+                    <div class="flex gap-5">
+                        <img class="w-11 h-11 rounded-full" 
+                        src="${video?.authors[0]?.profile_picture}" alt="">
+                        <h2 class="text-lg font-bold"> ${video?.title}
+                        </h2>
+                    </div>
+    
+                    <!-- Name -->
+                    <div class="ml-16 -mt-3">
+                        <h2 class="card-title text-[#111111B3] text-sm">
+                            ${video?.authors[0]?.profile_name}
+                            <div class="bedge">
+                                <img class="hidden" src="blueTick.png" alt="">
+                            </div>
+                        </h2>
+                    </div>
+                    <h2 class="text-[#111111B3] ml-16 text-sm"><span>${video?.others?.views}</span> views</h2>
                 </div>
-                <h2 class="text-[#111111B3] ml-16 text-sm"><span>${video?.others?.views}</span> views</h2>
             </div>
-        </div>
-    `
-    cardContainer.appendChild(div); 
+        `
+        
+    
+        cardContainer1.appendChild(div); 
 
-    });
+        });
+    }
+    else{
+        cardContainer2.classList.remove('hidden');
+        cardContainer1.classList.add('hidden');
+        const div = document.createElement('div')
+        div.innerHTML = `
+                <div class = "mx-auto my-20">
+                <figure><img src="Icon.png" alt="" /></figure>
+                <h2 class = "text-2xl my-9">Oops!! Sorry, There is no <br> content here</h2>
+                </div>
+        `
+        cardContainer2.appendChild(div); 
+    }
 }
-// const handleBlueTick = () =>{
+// const sortedByView = () =>{
 
+// }
 // }
 // loadVideos();
 loadTubeVideosHandler();
