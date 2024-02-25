@@ -1,9 +1,6 @@
 # PHero-tube
 
-## [ Private Repo Link](https://classroom.github.com/a/HIPmbF3j)
-
-Click here for the private repo: [https://classroom.github.com/a/HIPmbF3j](https://classroom.github.com/a/HIPmbF3j)
-
+## [ Live Link](https://cheerful-twilight-dd2451.netlify.app/)
 
 
 # API
